@@ -1,0 +1,10 @@
+# Ignora archivos de compilación generados por IDEs
+/target/
+
+# Ignora el directorio testoutput
+test-output/
+
+# Ignorar archivos y directorios específicos de Eclipse
+.classpath
+.project
+.settings/
