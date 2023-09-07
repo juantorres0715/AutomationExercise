@@ -2,8 +2,7 @@ package com.automationexercise.pages;
 
 import java.time.Duration;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,8 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 
-	private WebDriver driver;
-	//private static final Logger logger = LogManager.getLogger(BasePage.class);
+	public WebDriver driver;
 	private WebDriverWait wait;
 	
 	// Constructor
@@ -39,4 +37,47 @@ public class BasePage {
 		wait.until(ExpectedConditions.visibilityOf(element));
 		return element.isDisplayed();
 	}
+	
+	/**
+	 * Perform a click in a web element
+	 * @param element
+	 */
+	protected void click(WebElement element){
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+		element.click();
+	}
+	
+	/**
+	 * Get text from Web Element
+	 * @param element
+	 * @param Text
+	 * @return String
+	 */
+	protected String getText(WebElement element, String Text) {
+		wait.until(ExpectedConditions.textToBePresentInElement(element, Text));
+		return element.getText();
+	}
+	
+	/**
+	 * Get text from Web Element
+	 * @param element
+	 * @param Text
+	 * @return String
+	 */
+	protected String getText(WebElement element) {
+		wait.until(ExpectedConditions.visibilityOf(element));
+		return element.getText();
+	}
+	
+	protected void scrollPage (String to) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		if(to.equals("up")) {
+			js.executeScript("window.scrollBy(0, -500);");
+		} else if (to.equals("down")) {
+			js.executeScript("window.scrollBy(0, 500);");
+		}
+		
+	}
+	
+	
 }

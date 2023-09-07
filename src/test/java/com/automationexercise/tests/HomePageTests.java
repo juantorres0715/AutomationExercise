@@ -11,6 +11,6 @@ public class HomePageTests extends BaseTests {
 	@Test(description = "Automation Exercise page Logo Verification")
 	public void logoVerification() {
 		HomePage homePage = getHomePage();
-		assertTrue(homePage.logoIsDisplayed());
+		assertTrue(homePage.homePageLogoIsDisplayed());
 	}
 }
